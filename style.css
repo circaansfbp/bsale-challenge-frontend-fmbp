@@ -1,0 +1,81 @@
+/* Reseteo global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2.1fr 0.9fr;
+  padding: 6.25rem;
+}
+
+/* ******************************** */
+/* Sección: listado de productos */
+/* ******************************** */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 3.75rem;
+  row-gap: 3.75rem;
+}
+
+.cabecera {
+  grid-column: span 3;
+}
+
+.producto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 15.625rem;
+  height: 28.125rem;
+  border-radius: 12px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
+}
+
+.img-producto {
+  max-width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.descripcion-producto {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 1.5625rem;
+  flex: 1 0 auto;
+  color: #331205;
+  font-size: 1.125rem;
+}
+
+.precio-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.precio-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: rgba(255, 92, 26, 0.9);
+}
+
+.add-to-cart-btn {
+  cursor: pointer;
+  border: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background-color: rgba(255, 92, 26, 0.9);
+  color: #fff;
+  justify-self: flex-end;
+  height: 2.5rem;
+  font-family: inherit;
+}
