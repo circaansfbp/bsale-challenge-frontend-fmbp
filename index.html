@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" href="style.css" />
 
+    <script defer src="script.js"></script>
+
     <title>Bsale Test</title>
   </head>
 
@@ -22,104 +24,8 @@
     <main class="container">
       <h1 class="cabecera">BSALE &mdash; Tienda</h1>
 
-      <!-- Despliegue de productos -->
-      <section class="productos">
-        <div class="producto">
-          <img
-            src="assets/images/gafas-rectangulares.jpg"
-            alt="Imagen del producto"
-            class="img-producto"
-          />
-
-          <div class="descripcion-producto">
-            <p class="nombre-producto">Gafas rectangulares</p>
-            <!-- Añadir ícono -->
-            <div class="precio-container">
-              <ion-icon name="cash-outline" class="precio-icon"></ion-icon>
-              <p class="precio-producto">9.990 c/u</p>
-            </div>
-          </div>
-
-          <button class="btn add-to-cart-btn">Añadir al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img
-            src="assets/images/gafas-ovaladas.jpg"
-            alt="Imagen del producto"
-            class="img-producto"
-          />
-
-          <div class="descripcion-producto">
-            <p class="nombre-producto">Gafas ovaladas</p>
-
-            <div class="precio-container">
-              <ion-icon name="cash-outline" class="precio-icon"></ion-icon>
-              <p class="precio-producto">9.990 c/u</p>
-            </div>
-          </div>
-
-          <button class="btn add-to-cart-btn">Añadir al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img
-            src="assets/images/planta.jpg"
-            alt="Imagen del producto"
-            class="img-producto"
-          />
-
-          <div class="descripcion-producto">
-            <p class="nombre-producto">Suculenta</p>
-
-            <div class="precio-container">
-              <ion-icon name="cash-outline" class="precio-icon"></ion-icon>
-              <p class="precio-producto">9.990 c/u</p>
-            </div>
-          </div>
-
-          <button class="btn add-to-cart-btn">Añadir al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img
-            src="assets/images/zapatillas-negras.jpg"
-            alt="Imagen del producto"
-            class="img-producto"
-          />
-
-          <div class="descripcion-producto">
-            <p class="nombre-producto">Zapatillas Nike Negras</p>
-
-            <div class="precio-container">
-              <ion-icon name="cash-outline" class="precio-icon"></ion-icon>
-              <p class="precio-producto">9.990 c/u</p>
-            </div>
-          </div>
-
-          <button class="btn add-to-cart-btn">Añadir al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img
-            src="assets/images/zapatillas-rojas.jpg"
-            alt="Imagen del producto"
-            class="img-producto"
-          />
-
-          <div class="descripcion-producto">
-            <p class="nombre-producto">Zapatillas Nike Rojas</p>
-
-            <!-- Añadir ícono -->
-            <div class="precio-container">
-              <ion-icon name="cash-outline" class="precio-icon"></ion-icon>
-              <p class="precio-producto">9.990 c/u</p>
-            </div>
-          </div>
-
-          <button class="btn add-to-cart-btn">Añadir al carrito</button>
-        </div>
-      </section>
+      <!-- Despliegue de productos (Creado dinámicamente) -->
+      <section class="productos"></section>
 
       <!-- Opciones de búsqueda -->
       <section class="opciones">
@@ -140,20 +46,12 @@
 
         <!-- Seleccionar categorías -->
         <div class="filtro">
-          <label for="selec-categoria">Seleccionar categoría</label>
+          <label for="selec-categoria">Filtrar por categoría</label>
           <select
             name="selec-categoria"
             id="selec-categoria"
             class="filtro-select"
-          >
-            <option value="" selected>Seleccionar ...</option>
-          </select>
-          <!-- <input
-            name="selec-categoria"
-            id="selec-categoria"
-            type="text"
-            class="filtro-input"
-          /> -->
+          ></select>
         </div>
 
         <!-- Botón para "ver" el carrito -->
