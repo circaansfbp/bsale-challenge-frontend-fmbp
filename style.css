@@ -10,6 +10,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+/* Contenedor principal */
 .container {
   display: grid;
   grid-template-columns: 2.1fr 0.9fr;
@@ -17,12 +18,14 @@ body {
   row-gap: 3.125rem;
 }
 
+/* Título 'Tienda Bsale' */
 .cabecera {
   grid-column: span 2;
   color: #331205;
   justify-self: center;
 }
 
+/* Buttons */
 .btn {
   cursor: pointer;
   border: none;
@@ -35,6 +38,31 @@ body {
 
 .btn:hover {
   background-color: #e65317;
+}
+
+/* Paginación y sus links */
+.paginacion {
+  justify-self: center;
+  display: flex;
+  gap: 1.5625rem;
+}
+
+.nro-pagina {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 1.125rem;
+  color: #331205;
+  transition: color 0.3s;
+}
+
+.nro-pagina:hover {
+  color: #e65317;
+}
+
+/* Clase 'activa' para el número de página */
+.nro-pagina--active {
+  color: #e65317;
 }
 
 /* ******************************** */
