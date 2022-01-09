@@ -14,6 +14,27 @@ body {
   display: grid;
   grid-template-columns: 2.1fr 0.9fr;
   padding: 6.25rem;
+  row-gap: 3.125rem;
+}
+
+.cabecera {
+  grid-column: span 2;
+  color: #331205;
+  justify-self: center;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  background-color: #ff5c1a;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.0625rem;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #e65317;
 }
 
 /* ******************************** */
@@ -24,10 +45,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 3.75rem;
   row-gap: 3.75rem;
-}
-
-.cabecera {
-  grid-column: span 3;
 }
 
 .producto {
@@ -69,13 +86,67 @@ body {
 }
 
 .add-to-cart-btn {
-  cursor: pointer;
-  border: none;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
-  background-color: rgba(255, 92, 26, 0.9);
-  color: #fff;
   justify-self: flex-end;
   height: 2.5rem;
+}
+
+/* ******************************** */
+/* Sección: opciones de búsqueda */
+/* ******************************** */
+.opciones {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 4rem 0 4rem 3.75rem;
+}
+
+.filtro {
+  position: relative;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.filtro-input,
+.filtro-select {
+  width: 21.875rem;
+  height: 2.5rem;
+  border-radius: 9px;
+  border: 2px solid #ff5c1a;
+  transition: all 0.3s;
+  padding: 0.3125rem;
   font-family: inherit;
+}
+
+.filtro-input:focus,
+.filtro-select:focus {
+  outline: none;
+  border: 2px solid #802e0d;
+}
+
+.filtro-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  right: 0;
+  border-top-right-radius: 9px;
+  border-bottom-right-radius: 9px;
+}
+
+.buscar-icon {
+  margin-top: 5px;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.check-cart-btn {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 9px;
 }

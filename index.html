@@ -20,10 +20,10 @@
 
   <body>
     <main class="container">
+      <h1 class="cabecera">BSALE &mdash; Tienda</h1>
+
       <!-- Despliegue de productos -->
       <section class="productos">
-        <h1 class="cabecera">Tienda</h1>
-
         <div class="producto">
           <img
             src="assets/images/gafas-rectangulares.jpg"
@@ -40,7 +40,7 @@
             </div>
           </div>
 
-          <button class="add-to-cart-btn">Añadir al carrito</button>
+          <button class="btn add-to-cart-btn">Añadir al carrito</button>
         </div>
 
         <div class="producto">
@@ -59,7 +59,7 @@
             </div>
           </div>
 
-          <button class="add-to-cart-btn">Añadir al carrito</button>
+          <button class="btn add-to-cart-btn">Añadir al carrito</button>
         </div>
 
         <div class="producto">
@@ -78,7 +78,7 @@
             </div>
           </div>
 
-          <button class="add-to-cart-btn">Añadir al carrito</button>
+          <button class="btn add-to-cart-btn">Añadir al carrito</button>
         </div>
 
         <div class="producto">
@@ -97,7 +97,7 @@
             </div>
           </div>
 
-          <button class="add-to-cart-btn">Añadir al carrito</button>
+          <button class="btn add-to-cart-btn">Añadir al carrito</button>
         </div>
 
         <div class="producto">
@@ -117,7 +117,7 @@
             </div>
           </div>
 
-          <button class="add-to-cart-btn">Añadir al carrito</button>
+          <button class="btn add-to-cart-btn">Añadir al carrito</button>
         </div>
       </section>
 
@@ -125,36 +125,39 @@
       <section class="opciones">
         <!-- Buscar productos -->
         <div class="filtro">
-          <label for="buscar-prod" class="buscar-prod-label"
-            >Buscar Productos</label
-          >
+          <label for="buscar-prod">Buscar Productos</label>
           <input
             name="buscar-prod"
             id="buscar-prod"
             type="text"
-            class="buscar-productos-input"
+            class="filtro-input"
           />
 
-          <button class="buscar-prod-btn"></button>
+          <button class="btn filtro-btn">
+            <ion-icon name="search-outline" class="buscar-icon"></ion-icon>
+          </button>
         </div>
 
         <!-- Seleccionar categorías -->
         <div class="filtro">
-          <label for="selec-categoria" class="select-categoria-label"
-            >Seleccionar categoría</label
+          <label for="selec-categoria">Seleccionar categoría</label>
+          <select
+            name="selec-categoria"
+            id="selec-categoria"
+            class="filtro-select"
           >
-          <input
+            <option value="" selected>Seleccionar ...</option>
+          </select>
+          <!-- <input
             name="selec-categoria"
             id="selec-categoria"
             type="text"
-            class="selec-categoria-input"
-          />
-
-          <button class="selec-categoria-btn"></button>
+            class="filtro-input"
+          /> -->
         </div>
 
         <!-- Botón para "ver" el carrito -->
-        <button class="check-cart-btn">Ver carrito</button>
+        <button class="btn check-cart-btn">Ver carrito</button>
       </section>
     </main>
 
