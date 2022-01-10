@@ -63,6 +63,7 @@ body {
 /* Clase 'activa' para el número de página */
 .nro-pagina--active {
   color: #e65317;
+  cursor: default;
 }
 
 /* ******************************** */

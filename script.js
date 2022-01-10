@@ -101,27 +101,49 @@ const genPagination = function (totalPages, event) {
         divPaginacion.appendChild(linkPage);
     }
 
-    // Añade la clase 'active' al primer link
+    // Añade la clase 'active' al primer link y lo deshabilita
     divPaginacion.children[0].classList.add('nro-pagina--active');
+    divPaginacion.children[0].setAttribute('disabled', 'true');
+}
+
+// Función que permite generar los toasts a mostrar al usuario
+const genToastify = function (text, status) {
+    return Toastify({
+        text: text,
+        duration: 3000,
+        close: true,
+        gravity: 'bottom',
+        position: 'center',
+        stopOnFocus: true,
+        style: {
+            background: `${status ? '#ff5c1a' : '#331205'}`
+        }
+    }).showToast();
 }
 
 // Función callback gatillada al percibirse un cambio en el select
 const selectCategory = function (e) {
     seccionProductosEl.innerHTML = '';
+    divPaginacion.innerHTML = '';
+    inputBuscarProd.value = '';
 
     // Se obtienen los productos de acuerdo con la categoría seleccionada
     fetch(`${url}/productos/categoria/${e.target.value}/page/0`)
         .then(res => res.json())
         .then(data => {
+            console.log(data);
+
             genPagination(data.totalPages, e);
 
             for (let d of data.content) {
                 createAndDisplayProducts(d);
             }
+
+            genToastify(`${data.totalElements} producto(s) encontrado(s)`, true);
         })
         .catch(err => {
             divPaginacion.innerHTML = ' ';
-            console.log(err);
+            genToastify('Algo salió mal :(', false);
         });
 
 };
@@ -130,29 +152,45 @@ const selectCategory = function (e) {
 const searchProduct = function () {
     // Guard clause
     // Si solo existen espacios en blanco en el input
-    if (inputBuscarProd.value.match(/^\s*$/)) return;
+    if (inputBuscarProd.value.match(/^\s*$/)) {
+        genToastify('Debes ingresar el producto a buscar!', false);
+        return;
+    }
+
+    // Si el input posee menos de 3 caracteres
+    if (inputBuscarProd.value.length < 3) {
+        genToastify('Debes ingresar al menos 3 caracteres!', false);
+        return;
+    }
 
     // Se conserva el producto buscado para evitar errores al borrar el value del input
     searchedProduct = `${inputBuscarProd.value}`;
 
     seccionProductosEl.innerHTML = '';
+    divPaginacion.innerHTML = '';
     selectCategoriaEl.value = "";
 
     // Obtiene los productos de acuerdo al parámetro buscado
     fetch(`${url}/productos/buscar/page/0?` + new URLSearchParams({
         name: `${searchedProduct}`
     }))
-        .then(res => res.json())
+        .then(res => {
+            if (res.ok) return res.json();
+            else if (res.status === 404) {
+                genToastify(`La búsqueda de "${searchedProduct}" no dió resultados :(`);
+            }
+        })
         .then(data => {
             genPagination(data.totalPages);
 
             for (let d of data.content) {
                 createAndDisplayProducts(d);
             }
+
+            genToastify(`${data.totalElements} producto(s) encontrado(s)`, true);
         })
         .catch(err => {
             divPaginacion.innerHTML = ' ';
-            console.log(err);
         });
 };
 
@@ -165,10 +203,15 @@ const loadPage = function (e) {
     seccionProductosEl.innerHTML = '';
     let urlPageToFetch = '';
 
-    // Remueve la clase 'active' de los links
-    // y luego se agrega al que fue clickado.
-    Array.from(divPaginacion.children).forEach(child => child.classList.remove('nro-pagina--active'));
+    // Remueve la clase 'active' y el atributo disabled de los links
+    // y luego se agregan al que fue clickado.
+    Array.from(divPaginacion.children).forEach(child => {
+        child.classList.remove('nro-pagina--active');
+        child.removeAttribute('disabled');
+    });
+
     e.target.classList.add('nro-pagina--active');
+    e.target.setAttribute('disabled', 'true');
 
     // Si la paginación viene desde el filtrado de productos por categoría
     if (e.target.getAttribute('data-request').includes('categoria'))
